@@ -1,0 +1,42 @@
+#______________________________________#
+#CONSULTAS RECURRENTES
+
+#Estado del clúster (nombre, estado, número de nodos, shards, tareas…).
+GET isoph-fim/_cluster/health?pretty
+
+#Memoria, índices, documentos, almacenamiento...
+GET /isoph-fim/_stats?human
+
+#Indexación, almacenamiento
+GET isoph-fim/_stats/indexing,store?human
+
+#Fecha de creación del índice,número de shards,UUID y versión.
+GET /isoph-fim/_settings?human
+
+#Devuelve información de los shards (SEARCH API)
+GET /isoph-fim/_search_shards?pretty
+
+#Muestra el mapeado del índice
+GET /isoph-fim/_mapping?pretty
+
+#Información global
+GET /_stats
+
+#Mapping y settings
+GET /isoph-fim
+
+
+#______________________________________#
+#CONSULTAS ERRÓNEAS (PARA REVISAR)
+
+# Deprecation: [types removal] Specifying types in document get requests is deprecated, use the /{index}/_doc/{id} endpoint instead.
+GET isoph-fim/_cat/shards?
+
+#Sin autorización
+GET /_cat/allocation?v&pretty
+GET _cluster/health
+GET /_cat/master?v
+GET _cluster/health/isoph-fim
+GET _tasks
+GET _tasks?actions=data_frame/transforms*&detailed
+GET _cluster/settings
